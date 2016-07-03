@@ -6,6 +6,7 @@ type OutgoingMessage struct {
 	Channel string `json:"channel,omitempty"`
 	Text    string `json:"text,omitempty"`
 	Type    string `json:"type,omitempty"`
+	Mrkdwn  bool   `json:"type,omitempty"`
 }
 
 // Message is an auxiliary type to allow us to have a message containing sub messages
@@ -108,13 +109,15 @@ type Pong struct {
 // NewOutgoingMessage prepares an OutgoingMessage that the user can
 // use to send a message. Use this function to properly set the
 // messageID.
-func (rtm *RTM) NewOutgoingMessage(text string, channel string) *OutgoingMessage {
+func (rtm *RTM) NewOutgoingMessage(text string, channel string, mrkdwn bool) *OutgoingMessage {
 	id := rtm.idGen.Next()
+
 	return &OutgoingMessage{
 		ID:      id,
 		Type:    "message",
 		Channel: channel,
 		Text:    text,
+		Mrkdwn:  mrkdwn,
 	}
 }
 
