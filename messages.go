@@ -6,7 +6,7 @@ type OutgoingMessage struct {
 	Channel string `json:"channel,omitempty"`
 	Text    string `json:"text,omitempty"`
 	Type    string `json:"type,omitempty"`
-	Mrkdwn  bool   `json:"type,omitempty"`
+	Mrkdwn  bool   `json:"mrkdwn,omitempty"`
 }
 
 // Message is an auxiliary type to allow us to have a message containing sub messages
